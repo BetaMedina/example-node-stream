@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  dynamodb:
+    container_name: dynamodb-product-local
+    image: amazon/dynamodb-local
+    command: -jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal
+    ports:
+      - '8000:8000'
+    volumes:
+      - dynamodb-product-data:/home/dynamodblocal
+    networks:
+      - default
+volumes:
+  dynamodb-product-data:
+  redis-product-data:
